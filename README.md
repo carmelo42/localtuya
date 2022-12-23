@@ -4,6 +4,11 @@ This fork allow HVAC Airton - Yuzu - Fujicool (self installable HVAC system sold
 
 Configuration in Home Assistant : 
 
+![image](https://user-images.githubusercontent.com/2070041/209322199-9c2d258b-ddc0-42fb-a725-a6e8b092ca20.png)
+
+
+![image](https://user-images.githubusercontent.com/2070041/209322217-76d25526-a13b-493d-ae1a-c946a686e1da.png)
+
 
 
 ![logo](https://github.com/rospogrigio/localtuya-homeassistant/blob/master/img/logo-small.png)
