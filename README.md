@@ -1,3 +1,11 @@
+# This is a fork from official localtuya repo.
+
+This fork allow HVAC Airton - Yuzu - Fujicool (self installable HVAC system sold in France) to be controlled with localtuya to avoid communication with Tuya cloud servers.
+
+Configuration in Home Assistant : 
+
+
+
 ![logo](https://github.com/rospogrigio/localtuya-homeassistant/blob/master/img/logo-small.png)
 
 A Home Assistant custom Integration for local handling of Tuya-based devices.
