@@ -16,6 +16,9 @@ from homeassistant.components.climate.const import (
     HVAC_MODE_AUTO,
     HVAC_MODE_HEAT,
     HVAC_MODE_OFF,
+    HVAC_MODE_COOL,
+    HVAC_MODE_DRY,
+    HVAC_MODE_FAN_ONLY,
     PRESET_AWAY,
     PRESET_ECO,
     PRESET_HOME,
@@ -24,6 +27,7 @@ from homeassistant.components.climate.const import (
     SUPPORT_TARGET_TEMPERATURE,
     SUPPORT_TARGET_TEMPERATURE_RANGE,
 )
+
 from homeassistant.const import (
     ATTR_TEMPERATURE,
     CONF_TEMPERATURE_UNIT,
@@ -69,10 +73,6 @@ HVAC_MODE_SETS = {
         HVAC_MODE_HEAT: "Manual",
         HVAC_MODE_AUTO: "Program",
     },
-    "m/p": {
-        HVAC_MODE_HEAT: "m",
-        HVAC_MODE_AUTO: "p",
-    },
     "True/False": {
         HVAC_MODE_HEAT: True,
     },
@@ -80,7 +80,15 @@ HVAC_MODE_SETS = {
         HVAC_MODE_HEAT: "1",
         HVAC_MODE_AUTO: "0",
     },
+    "auto/cold/wet/heat/fan": {
+        HVAC_MODE_AUTO: "auto",
+        HVAC_MODE_COOL: "cold",
+        HVAC_MODE_DRY: "wet",
+        HVAC_MODE_HEAT: "hot",
+        HVAC_MODE_FAN_ONLY: "wind",
+    }
 }
+
 HVAC_ACTION_SETS = {
     "True/False": {
         CURRENT_HVAC_HEAT: True,
@@ -274,6 +282,7 @@ class LocaltuyaClimate(LocalTuyaEntity, ClimateEntity):
     @property
     def current_temperature(self):
         """Return the current temperature."""
+        self._current_temperature = self._current_temperature * 10
         return self._current_temperature
 
     @property
