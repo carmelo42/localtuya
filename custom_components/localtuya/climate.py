@@ -282,12 +282,25 @@ class LocaltuyaClimate(LocalTuyaEntity, ClimateEntity):
     @property
     def current_temperature(self):
         """Return the current temperature."""
-        self._current_temperature = self._current_temperature * 10
+        if self._current_temperature > 100:
+            tempcurrent = self._current_temperature // 10
+        elif self._current_temperature < 5:
+            tempcurrent = self._current_temperature * 10
+        else:
+            tempcurrent = self._current_temperature
+        self._current_temperature = tempcurrent
         return self._current_temperature
 
     @property
     def target_temperature(self):
         """Return the temperature we try to reach."""
+        if self._target_temperature > 100:
+            temptarget = self._target_temperature // 10
+        elif self._target_temperature < 5:
+            temptarget = self._target_temperature * 10
+        else:
+            temptarget = self._target_temperature
+        self._target_temperature = temptarget
         return self._target_temperature
 
     @property
@@ -409,3 +422,4 @@ class LocaltuyaClimate(LocalTuyaEntity, ClimateEntity):
 
 
 async_setup_entry = partial(async_setup_entry, DOMAIN, LocaltuyaClimate, flow_schema)
+
